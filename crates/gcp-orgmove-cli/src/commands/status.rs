@@ -51,7 +51,7 @@ pub fn run(
     let smoke: Vec<_> = state
         .smoke_results
         .iter()
-        .filter(|r| r.project.as_ref().map(&keep).unwrap_or(true))
+        .filter(|r| r.project.as_ref().map(keep).unwrap_or(true))
         .collect();
     if !smoke.is_empty() {
         p.info("\nSmoke tests:");
