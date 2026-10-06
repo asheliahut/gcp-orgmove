@@ -1,0 +1,25 @@
+---
+source: crates/gcp-orgmove-cli/tests/golden.rs
+expression: fixed
+---
+{
+  "command": "parity-fix",
+  "data": {
+    "dry_run": false,
+    "results": [
+      {
+        "action": "grant roles/compute.viewer to group:eng@x.com on projects/proj-aaaa",
+        "finding": "F-ade1b52c9637",
+        "project": "proj-aaaa",
+        "result": "Applied"
+      },
+      {
+        "action": "grant roles/compute.viewer to group:eng@x.com on projects/proj-bbbb",
+        "finding": "F-147385dd1430",
+        "project": "proj-bbbb",
+        "result": "Applied"
+      }
+    ]
+  },
+  "schema_version": 1
+}

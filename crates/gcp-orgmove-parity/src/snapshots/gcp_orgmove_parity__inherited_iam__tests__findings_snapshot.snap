@@ -1,0 +1,7 @@
+---
+source: crates/gcp-orgmove-parity/src/inherited_iam.rs
+expression: "rows.join(\"\\n\")"
+---
+Warning | user:a@x.com would keep the broad primitive role roles/editor; consider a narrower role in the destination
+Gap | group:eng@x.com has roles/compute.viewer via organizations/111 today but will not under folders/20
+Gap | user:a@x.com has roles/editor via folders/10 today but will not under folders/20

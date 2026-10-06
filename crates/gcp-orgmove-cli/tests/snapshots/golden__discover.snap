@@ -1,0 +1,34 @@
+---
+source: crates/gcp-orgmove-cli/tests/golden.rs
+expression: "golden(&g, d, &[\"discover\"]).await"
+---
+{
+  "command": "discover",
+  "data": {
+    "added_to_manifest": [],
+    "projects": [
+      {
+        "id": "proj-aaaa",
+        "labels": {},
+        "number": "1001",
+        "parent": "folders/10",
+        "state": "ACTIVE"
+      },
+      {
+        "id": "proj-bbbb",
+        "labels": {},
+        "number": "1002",
+        "parent": "folders/10",
+        "state": "ACTIVE"
+      },
+      {
+        "id": "proj-cccc",
+        "labels": {},
+        "number": "1003",
+        "parent": "folders/10",
+        "state": "ACTIVE"
+      }
+    ]
+  },
+  "schema_version": 1
+}

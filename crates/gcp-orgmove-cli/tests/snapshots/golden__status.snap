@@ -1,0 +1,32 @@
+---
+source: crates/gcp-orgmove-cli/tests/golden.rs
+expression: "golden(&g, d, &[\"status\"]).await"
+---
+{
+  "command": "status",
+  "data": {
+    "findings": [],
+    "overrides": [],
+    "pending_constraints": [],
+    "projects": [
+      {
+        "id": "proj-aaaa",
+        "original_parent": "folders/10",
+        "state": {
+          "state": "moved"
+        },
+        "updated_at": "[timestamp]"
+      },
+      {
+        "id": "proj-bbbb",
+        "original_parent": "folders/10",
+        "state": {
+          "state": "moved"
+        },
+        "updated_at": "[timestamp]"
+      }
+    ],
+    "smoke_results": []
+  },
+  "schema_version": 1
+}

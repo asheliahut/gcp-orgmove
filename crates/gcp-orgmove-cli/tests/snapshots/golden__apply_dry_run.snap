@@ -1,0 +1,20 @@
+---
+source: crates/gcp-orgmove-cli/tests/golden.rs
+expression: "golden(&g, d, &[\"apply\"]).await"
+---
+{
+  "command": "apply",
+  "data": {
+    "actions": [
+      "set constraints/resourcemanager.allowedExportDestinations on organizations/111: allow under:organizations/222 (backup policy-backups/organizations/111/constraints/resourcemanager.allowedExportDestinations)",
+      "set constraints/resourcemanager.allowedImportSources on organizations/222: allow under:organizations/111 (backup policy-backups/organizations/222/constraints/resourcemanager.allowedImportSources)",
+      "batch 1:",
+      "  move proj-aaaa from folders/10 to folders/20",
+      "batch 2:",
+      "  move proj-bbbb from folders/10 to folders/20",
+      "restore the backed-up constraints"
+    ],
+    "dry_run": true
+  },
+  "schema_version": 1
+}

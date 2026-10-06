@@ -1,0 +1,18 @@
+---
+source: crates/gcp-orgmove-cli/tests/golden.rs
+expression: "golden(&g, d, &[\"rollback\", \"--all\", \"--yes\"]).await"
+---
+{
+  "command": "rollback",
+  "data": {
+    "constraints_restored": true,
+    "failed": [],
+    "reverted": [],
+    "rolled_back": [
+      "proj-aaaa",
+      "proj-bbbb"
+    ],
+    "skipped": []
+  },
+  "schema_version": 1
+}

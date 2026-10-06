@@ -1,0 +1,27 @@
+name: e2e (manual)
+# Real organizations: never on push. See docs/e2e.md.
+on:
+  workflow_dispatch:
+    inputs:
+      dest_folder:
+        description: "Optional destination folder ID"
+        required: false
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    environment: e2e
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.E2E_GCP_CREDENTIALS }}
+      - uses: google-github-actions/setup-gcloud@v2
+      - run: cargo test -p gcp-orgmove-cli --test e2e -- --ignored --nocapture
+        env:
+          GCP_ORGMOVE_E2E: "1"
+          E2E_SOURCE_ORG: ${{ secrets.E2E_SOURCE_ORG }}
+          E2E_DEST_ORG: ${{ secrets.E2E_DEST_ORG }}
+          E2E_DEST_FOLDER: ${{ github.event.inputs.dest_folder }}
+          E2E_QUOTA_PROJECT: ${{ secrets.E2E_QUOTA_PROJECT }}

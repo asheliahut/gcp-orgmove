@@ -1,0 +1,94 @@
+---
+source: crates/gcp-orgmove-core/src/plan.rs
+expression: "String::from_utf8(sample(\"2026-10-05T12:00:00Z\").to_json_bytes().unwrap()).unwrap()"
+---
+{
+  "version": 1,
+  "generated_at": "2026-10-05T12:00:00Z",
+  "manifest_sha256": "abc",
+  "source_org": "111111111111",
+  "destination_org": "222222222222",
+  "policy_changes": [],
+  "projects": [
+    {
+      "id": "my-app-dev",
+      "number": "123456789",
+      "current_parent": "folders/1",
+      "landing_parent": "folders/444444444444",
+      "group": null,
+      "analysis": {
+        "blockers": [],
+        "warnings": [],
+        "info": []
+      },
+      "findings": [
+        {
+          "id": "F-2e46102a5ee1",
+          "project": "my-app-dev",
+          "check": "inherited-iam",
+          "category": "iam",
+          "severity": "gap",
+          "summary": "g"
+        },
+        {
+          "id": "F-694372dbead6",
+          "project": "my-app-dev",
+          "check": "inherited-iam",
+          "category": "iam",
+          "severity": "warning",
+          "summary": "w"
+        }
+      ],
+      "remediations": [],
+      "live_parent_at_plan_time": "folders/1",
+      "etag": "e"
+    },
+    {
+      "id": "my-app-prod",
+      "number": "123456789",
+      "current_parent": "folders/1",
+      "landing_parent": "folders/444444444444",
+      "group": null,
+      "analysis": {
+        "blockers": [],
+        "warnings": [],
+        "info": []
+      },
+      "findings": [
+        {
+          "id": "F-681f572588b1",
+          "project": "my-app-prod",
+          "check": "inherited-iam",
+          "category": "iam",
+          "severity": "gap",
+          "summary": "g"
+        },
+        {
+          "id": "F-f705b64d3e08",
+          "project": "my-app-prod",
+          "check": "inherited-iam",
+          "category": "iam",
+          "severity": "warning",
+          "summary": "w"
+        }
+      ],
+      "remediations": [],
+      "live_parent_at_plan_time": "folders/1",
+      "etag": "e"
+    }
+  ],
+  "order": [
+    [
+      "my-app-dev"
+    ],
+    [
+      "my-app-prod"
+    ]
+  ],
+  "summary": {
+    "projects": 2,
+    "blockers": 0,
+    "gaps": 2,
+    "warnings": 2
+  }
+}

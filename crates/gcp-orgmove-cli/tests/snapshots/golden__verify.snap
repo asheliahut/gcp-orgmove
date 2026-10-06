@@ -1,0 +1,72 @@
+---
+source: crates/gcp-orgmove-cli/tests/golden.rs
+expression: "golden(&g, d, &[\"verify\"]).await"
+---
+{
+  "command": "verify",
+  "data": {
+    "projects": [
+      {
+        "checks": [
+          {
+            "detail": "under folders/20",
+            "fatal": true,
+            "name": "parent",
+            "ok": true
+          },
+          {
+            "detail": "in organization 222",
+            "fatal": true,
+            "name": "organization",
+            "ok": true
+          },
+          {
+            "detail": "Active",
+            "fatal": true,
+            "name": "lifecycle",
+            "ok": true
+          },
+          {
+            "detail": "restored",
+            "fatal": false,
+            "name": "constraints",
+            "ok": true
+          }
+        ],
+        "id": "proj-aaaa",
+        "passed": true
+      },
+      {
+        "checks": [
+          {
+            "detail": "under folders/20",
+            "fatal": true,
+            "name": "parent",
+            "ok": true
+          },
+          {
+            "detail": "in organization 222",
+            "fatal": true,
+            "name": "organization",
+            "ok": true
+          },
+          {
+            "detail": "Active",
+            "fatal": true,
+            "name": "lifecycle",
+            "ok": true
+          },
+          {
+            "detail": "restored",
+            "fatal": false,
+            "name": "constraints",
+            "ok": true
+          }
+        ],
+        "id": "proj-bbbb",
+        "passed": true
+      }
+    ]
+  },
+  "schema_version": 1
+}

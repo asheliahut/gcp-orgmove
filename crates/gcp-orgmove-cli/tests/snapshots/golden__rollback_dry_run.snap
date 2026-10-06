@@ -1,0 +1,18 @@
+---
+source: crates/gcp-orgmove-cli/tests/golden.rs
+expression: "golden(&g, d, &[\"rollback\", \"--all\"]).await"
+---
+{
+  "command": "rollback",
+  "data": {
+    "actions": [
+      "set constraints/resourcemanager.allowedExportDestinations on organizations/222: allow under:organizations/111 (backup policy-backups/organizations/222/constraints/resourcemanager.allowedExportDestinations)",
+      "set constraints/resourcemanager.allowedImportSources on organizations/111: allow under:organizations/222 (backup policy-backups/organizations/111/constraints/resourcemanager.allowedImportSources)",
+      "move proj-aaaa back to folders/10",
+      "move proj-bbbb back to folders/10",
+      "restore the backed-up constraints"
+    ],
+    "dry_run": true
+  },
+  "schema_version": 1
+}

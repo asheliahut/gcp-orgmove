@@ -1,0 +1,60 @@
+---
+source: crates/gcp-orgmove-cli/tests/golden.rs
+expression: "golden(&g, d, &[\"parity\", \"verify\"]).await"
+---
+{
+  "command": "parity-verify",
+  "data": {
+    "projects": [
+      {
+        "checks": [
+          {
+            "detail": "no principals_to_probe configured; skipped",
+            "fatal": false,
+            "name": "iam-diff",
+            "ok": false
+          },
+          {
+            "detail": "no critical_permissions/principals_to_probe configured; skipped",
+            "fatal": false,
+            "name": "permissions",
+            "ok": false
+          },
+          {
+            "detail": "no `after` smoke tests configured; skipped",
+            "fatal": false,
+            "name": "smoke",
+            "ok": false
+          }
+        ],
+        "id": "proj-aaaa",
+        "passed": true
+      },
+      {
+        "checks": [
+          {
+            "detail": "no principals_to_probe configured; skipped",
+            "fatal": false,
+            "name": "iam-diff",
+            "ok": false
+          },
+          {
+            "detail": "no critical_permissions/principals_to_probe configured; skipped",
+            "fatal": false,
+            "name": "permissions",
+            "ok": false
+          },
+          {
+            "detail": "no `after` smoke tests configured; skipped",
+            "fatal": false,
+            "name": "smoke",
+            "ok": false
+          }
+        ],
+        "id": "proj-bbbb",
+        "passed": true
+      }
+    ]
+  },
+  "schema_version": 1
+}

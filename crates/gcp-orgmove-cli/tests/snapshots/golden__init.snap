@@ -1,0 +1,12 @@
+---
+source: crates/gcp-orgmove-cli/tests/golden.rs
+expression: "golden(&g, d,\n&[\"init\", \"--source-org\", \"111\", \"--destination-org\", \"222\"]).await"
+---
+{
+  "command": "init",
+  "data": {
+    "manifest": "<dir>/orgmove.yaml",
+    "principal": "me@example.com"
+  },
+  "schema_version": 1
+}

@@ -1,0 +1,12 @@
+---
+source: crates/gcp-orgmove-cli/tests/golden.rs
+expression: "golden(&g, d, &[\"parity\", \"prune\"]).await"
+---
+{
+  "command": "parity-prune",
+  "data": {
+    "dry_run": true,
+    "removed": []
+  },
+  "schema_version": 1
+}

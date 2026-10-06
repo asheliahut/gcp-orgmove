@@ -1,0 +1,203 @@
+---
+source: crates/gcp-orgmove-cli/tests/golden.rs
+expression: "golden(&g, d, &[\"plan\"]).await"
+---
+{
+  "command": "plan",
+  "data": {
+    "destination_org": "222",
+    "generated_at": "[timestamp]",
+    "manifest_sha256": "[sha256]",
+    "order": [
+      [
+        "proj-aaaa"
+      ],
+      [
+        "proj-bbbb"
+      ]
+    ],
+    "policy_changes": [
+      {
+        "action": "allow-value",
+        "backup_ref": "policy-backups/organizations/111/constraints/resourcemanager.allowedExportDestinations",
+        "constraint": "constraints/resourcemanager.allowedExportDestinations",
+        "scope": "organizations/111",
+        "value": "under:organizations/222"
+      },
+      {
+        "action": "allow-value",
+        "backup_ref": "policy-backups/organizations/222/constraints/resourcemanager.allowedImportSources",
+        "constraint": "constraints/resourcemanager.allowedImportSources",
+        "scope": "organizations/222",
+        "value": "under:organizations/111"
+      }
+    ],
+    "projects": [
+      {
+        "analysis": {
+          "blockers": [],
+          "info": [],
+          "warnings": []
+        },
+        "current_parent": "folders/10",
+        "etag": "p1",
+        "findings": [
+          {
+            "category": "iam",
+            "check": "inherited-iam",
+            "id": "F-ade1b52c9637",
+            "project": "proj-aaaa",
+            "remediation": {
+              "binding": {
+                "members": [
+                  "group:eng@x.com"
+                ],
+                "role": "roles/compute.viewer"
+              },
+              "scope": "projects/proj-aaaa",
+              "type": "add_iam_binding"
+            },
+            "severity": "gap",
+            "summary": "group:eng@x.com has roles/compute.viewer via organizations/111 today but will not under folders/20"
+          },
+          {
+            "category": "org_scoped",
+            "check": "org-scoped",
+            "id": "F-1f06defe37c7",
+            "project": "proj-aaaa",
+            "remediation": {
+              "instructions": "Confirm the project's billing account stays usable from the destination organization (billing.resourceAssociations.create) before moving proj-aaaa.",
+              "type": "manual"
+            },
+            "severity": "info",
+            "summary": "billing accounts are not moved with the project"
+          },
+          {
+            "category": "org_scoped",
+            "check": "org-scoped",
+            "id": "F-ccf5bff6838d",
+            "project": "proj-aaaa",
+            "remediation": {
+              "instructions": "Review essential contacts on proj-aaaa and on the destination hierarchy so security and billing notices still reach someone.",
+              "type": "manual"
+            },
+            "severity": "info",
+            "summary": "essential contacts inherited from the source organization stop applying"
+          }
+        ],
+        "group": null,
+        "id": "proj-aaaa",
+        "landing_parent": "folders/20",
+        "live_parent_at_plan_time": "folders/10",
+        "number": "1001",
+        "remediations": [
+          {
+            "binding": {
+              "members": [
+                "group:eng@x.com"
+              ],
+              "role": "roles/compute.viewer"
+            },
+            "scope": "projects/proj-aaaa",
+            "type": "add_iam_binding"
+          },
+          {
+            "instructions": "Confirm the project's billing account stays usable from the destination organization (billing.resourceAssociations.create) before moving proj-aaaa.",
+            "type": "manual"
+          },
+          {
+            "instructions": "Review essential contacts on proj-aaaa and on the destination hierarchy so security and billing notices still reach someone.",
+            "type": "manual"
+          }
+        ]
+      },
+      {
+        "analysis": {
+          "blockers": [],
+          "info": [],
+          "warnings": []
+        },
+        "current_parent": "folders/10",
+        "etag": "p2",
+        "findings": [
+          {
+            "category": "iam",
+            "check": "inherited-iam",
+            "id": "F-147385dd1430",
+            "project": "proj-bbbb",
+            "remediation": {
+              "binding": {
+                "members": [
+                  "group:eng@x.com"
+                ],
+                "role": "roles/compute.viewer"
+              },
+              "scope": "projects/proj-bbbb",
+              "type": "add_iam_binding"
+            },
+            "severity": "gap",
+            "summary": "group:eng@x.com has roles/compute.viewer via organizations/111 today but will not under folders/20"
+          },
+          {
+            "category": "org_scoped",
+            "check": "org-scoped",
+            "id": "F-34f1673111e6",
+            "project": "proj-bbbb",
+            "remediation": {
+              "instructions": "Confirm the project's billing account stays usable from the destination organization (billing.resourceAssociations.create) before moving proj-bbbb.",
+              "type": "manual"
+            },
+            "severity": "info",
+            "summary": "billing accounts are not moved with the project"
+          },
+          {
+            "category": "org_scoped",
+            "check": "org-scoped",
+            "id": "F-632da5ed903f",
+            "project": "proj-bbbb",
+            "remediation": {
+              "instructions": "Review essential contacts on proj-bbbb and on the destination hierarchy so security and billing notices still reach someone.",
+              "type": "manual"
+            },
+            "severity": "info",
+            "summary": "essential contacts inherited from the source organization stop applying"
+          }
+        ],
+        "group": null,
+        "id": "proj-bbbb",
+        "landing_parent": "folders/20",
+        "live_parent_at_plan_time": "folders/10",
+        "number": "1002",
+        "remediations": [
+          {
+            "binding": {
+              "members": [
+                "group:eng@x.com"
+              ],
+              "role": "roles/compute.viewer"
+            },
+            "scope": "projects/proj-bbbb",
+            "type": "add_iam_binding"
+          },
+          {
+            "instructions": "Confirm the project's billing account stays usable from the destination organization (billing.resourceAssociations.create) before moving proj-bbbb.",
+            "type": "manual"
+          },
+          {
+            "instructions": "Review essential contacts on proj-bbbb and on the destination hierarchy so security and billing notices still reach someone.",
+            "type": "manual"
+          }
+        ]
+      }
+    ],
+    "source_org": "111",
+    "summary": {
+      "blockers": 0,
+      "gaps": 2,
+      "projects": 2,
+      "warnings": 0
+    },
+    "version": 1
+  },
+  "schema_version": 1
+}
